@@ -1,12 +1,12 @@
 <?php
 
-namespace Tenolo\Utils\Tests;
+namespace Tenolo\Utilities\Utils\Tests;
 
-use Tenolo\Utils\MathUtil;
+use Tenolo\Utilities\Utils\MathUtil;
 
 /**
  * Class MathTest
- * @package Tenolo\Utils\Tests
+ * @package Tenolo\Utilities\Utils\Tests
  * @author Nikita Loges
  * @company tenolo GbR
  * @date 20.10.2014

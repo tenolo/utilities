@@ -1,10 +1,10 @@
 <?php
 
-namespace Tenolo\Utils;
+namespace Tenolo\Utilities\Utils;
 
 /**
  * Class IP
- * @package Tenolo\Utils
+ * @package Tenolo\Utilities\Utils
  * @author Nikita Loges
  * @company tenolo GbR
  * @date 03.11.2014

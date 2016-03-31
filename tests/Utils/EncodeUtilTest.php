@@ -1,12 +1,12 @@
 <?php
 
-namespace Tenolo\Utils\Tests;
+namespace Tenolo\Utilities\Utils\Tests;
 
-use Tenolo\Utils\EncodeUtil;
+use Tenolo\Utilities\Utils\EncodeUtil;
 
 /**
  * Class EncodingTest
- * @package Tenolo\Utils\Tests
+ * @package Tenolo\Utilities\Utils\Tests
  * @author Nikita Loges
  * @company tenolo GbR
  * @date 20.10.2014

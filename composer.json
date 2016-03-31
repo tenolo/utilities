@@ -1,8 +1,11 @@
 {
-    "name": "tenolo/util-library",
-    "description": "Only some basic util classes.",
+    "name": "tenolo/utilities",
+    "description": "Only some basic utility classes.",
     "keywords": [
         "base",
+        "utilities",
+        "utility",
+        "util",
         "utils",
         "tenolo"
     ],
@@ -28,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Tenolo\\Utils\\": "src/"
+            "Tenolo\\Utilities\\Utils\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tenolo\\Utils\\Tests\\": "tests/"
+            "Tenolo\\Utilities\\Utils\\Tests\\": "tests/"
         }
     },
     "extra": {

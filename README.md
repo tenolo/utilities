@@ -9,7 +9,7 @@ First you need to add `tenolo/util-library` to `composer.json`:
 ``` json
 {
    "require": {
-        "tenolo/util-library`": "~1.0"
+        "tenolo/util-library": "~1.0"
     }
 }
 ```
@@ -23,7 +23,7 @@ Then use it ;)
  
 namespace Some/Namespace;
 
-use Tenolo\Utils\StringUtil;
+use Tenolo\Utilities\Utils\StringUtil;
 
 // index.php
 $id = StringUtil::getRandomID(8);

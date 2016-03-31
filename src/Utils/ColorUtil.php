@@ -1,9 +1,9 @@
 <?php
-namespace Tenolo\Utils;
+namespace Tenolo\Utilities\Utils;
 
 /**
  * Class Color
- * @package Tenolo\Utils
+ * @package Tenolo\Utilities\Utils
  * @author Nikita Loges
  * @date 23.12.2014
  */

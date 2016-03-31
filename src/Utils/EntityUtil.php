@@ -1,10 +1,10 @@
 <?php
 
-namespace Tenolo\Utils;
+namespace Tenolo\Utilities\Utils;
 
 /**
  * Class Entity
- * @package Tenolo\Utils
+ * @package Tenolo\Utilities\Utils
  * @author Nikita Loges
  * @company tenolo GbR
  * @date 29.07.14

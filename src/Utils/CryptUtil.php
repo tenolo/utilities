@@ -1,11 +1,11 @@
 <?php
 
-namespace Tenolo\Utils;
+namespace Tenolo\Utilities\Utils;
 
 /**
  * Class Crypt
  *
- * @package Tenolo\Utils
+ * @package Tenolo\Utilities\Utils
  * @author Nikita Loges
  * @company tenolo GbR
  * @date 26.05.14
