@@ -9,7 +9,7 @@ First you need to add `tenolo/util-library` to `composer.json`:
 ``` json
 {
    "require": {
-        "tenolo/util-library": "~1.0"
+        "tenolo/utilities": "~1.0"
     }
 }
 ```
