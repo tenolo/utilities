@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Tenolo\\Utilities\\Utils\\": "src/"
+            "Tenolo\\Utilities\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tenolo\\Utilities\\Utils\\Tests\\": "tests/"
+            "Tenolo\\Utilities\\Tests\\": "tests/"
         }
     },
     "extra": {
