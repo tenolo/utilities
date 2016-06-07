@@ -16,7 +16,7 @@ class EntityUtilTest extends \PHPUnit_Framework_TestCase
 
     public function testGetMarkerName()
     {
-//        $result = EntityUtil::getMarkerName('Tenolo\Bundle\CoreBundle\Tests\Take\FakeClass');
+//        $result = EntityUtil::getMarkerName('Tenolo\Utilities\Tests\Take\FakeClass');
 //        $this->assertEquals('FakeClass:marker', $result);
 //
 //        $result = EntityUtil::getMarkerName(new FakeClass());
