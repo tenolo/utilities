@@ -88,11 +88,18 @@ class CryptUtil extends BaseUtil
      * generates a random hash.
      *
      * @param    string $method
+     * @param    integer $length
      *
      * @return    string        $hash
      */
-    public static function getRandomHash($method = 'sha1')
+    public static function getRandomHash($method = 'sha1', $length = null)
     {
-        return static::encrypt(MathUtil::getRandomID(), $method);
+        $hash = static::encrypt(MathUtil::getRandomID(), $method);
+
+        if ($length > 0) {
+            $hash = StringUtil::getFirstNChars($hash, $length);
+        }
+
+        return $hash;
     }
 } 
