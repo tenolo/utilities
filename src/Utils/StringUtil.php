@@ -48,13 +48,7 @@ class StringUtil extends BaseUtil
      */
     public static function getRandomID($length = null)
     {
-        $key = CryptUtil::getRandomHash();
-
-        if ($length > 0) {
-            $key = static::getFirstNChars($key, $length);
-        }
-
-        return $key;
+        return CryptUtil::getRandomHash('sha512', $length);
     }
 
     /**
