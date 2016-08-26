@@ -15,18 +15,25 @@ interface AbstractDelegatorInterface
 {
 
     /**
-     * @return DelegateInterface
+     * @return mixed
      */
-    public function getDefault();
+    public function getDefaultDelegate();
 
     /**
-     * @return ArrayCollection|DelegateInterface[]
+     * @return ArrayCollection
      */
     public function getDelegates();
 
     /**
-     * @param                   $name
-     * @param DelegateInterface $builder
+     * @param $name
+     *
+     * @return bool
      */
-    public function add($name, DelegateInterface $builder);
+    public function hasDelegate($name);
+
+    /**
+     * @param $name
+     * @param $delegate
+     */
+    public function addDelegate($name, $delegate);
 }

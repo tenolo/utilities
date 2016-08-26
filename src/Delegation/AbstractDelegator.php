@@ -23,7 +23,7 @@ class AbstractDelegator implements AbstractDelegatorInterface
     /**
      * @param DelegateInterface $default
      */
-    public function __construct(DelegateInterface $default = null)
+    public function __construct($default = null)
     {
         $this->defaultDelegate = $default;
         $this->delegates = new ArrayCollection();
@@ -32,13 +32,13 @@ class AbstractDelegator implements AbstractDelegatorInterface
     /**
      * @return DelegateInterface
      */
-    public function getDefault()
+    public function getDefaultDelegate()
     {
         return $this->defaultDelegate;
     }
 
     /**
-     * @return ArrayCollection|DelegateInterface[]
+     * @return ArrayCollection
      */
     public function getDelegates()
     {
@@ -48,7 +48,15 @@ class AbstractDelegator implements AbstractDelegatorInterface
     /**
      * @inheritdoc
      */
-    public function add($name, DelegateInterface $builder)
+    public function hasDelegate($name)
+    {
+        return $this->getDelegates()->containsKey($name);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function addDelegate($name, $builder)
     {
         if (!$this->getDelegates()->containsKey($name)) {
             $this->getDelegates()->set($name, $builder);
@@ -58,13 +66,13 @@ class AbstractDelegator implements AbstractDelegatorInterface
     /**
      * @param string $name
      *
-     * @return DelegateInterface
+     * @return mixed
      */
-    protected function get($name)
+    protected function getDelegate($name)
     {
         // fallback
         if (!$this->getDelegates()->containsKey($name)) {
-            return $this->getDefault();
+            return $this->getDefaultDelegate();
         }
 
         return $this->getDelegates()->get($name);
