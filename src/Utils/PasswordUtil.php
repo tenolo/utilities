@@ -22,7 +22,7 @@ class PasswordUtil extends BaseUtil
      *
      * @return string
      */
-    public static function getSimplePassword($length, array $params = [])
+    public static function getSimplePassword($length = null, array $params = [])
     {
         $resolver = new OptionsResolver();
 
@@ -34,20 +34,24 @@ class PasswordUtil extends BaseUtil
             ComputerPasswordGenerator::OPTION_SYMBOLS    => false,
         ]);
 
-        $resolver->setAllowedTypes('length', ['integer']);
+        $resolver->setAllowedTypes('length', ['integer', 'null']);
         $resolver->setAllowedTypes(ComputerPasswordGenerator::OPTION_UPPER_CASE, ['boolean']);
         $resolver->setAllowedTypes(ComputerPasswordGenerator::OPTION_LOWER_CASE, ['boolean']);
         $resolver->setAllowedTypes(ComputerPasswordGenerator::OPTION_NUMBERS, ['boolean']);
         $resolver->setAllowedTypes(ComputerPasswordGenerator::OPTION_SYMBOLS, ['boolean']);
 
         $resolver->setNormalizer('length', function (Options $options, $value) {
+            if (is_null($value)) {
+                $value = rand(10, 14);
+            }
+
             if ($value < 3) {
                 $value = 3;
             }
 
             return $value;
         });
-        
+
         $options = $resolver->resolve($params);
         $generator = new ComputerPasswordGenerator();
 
