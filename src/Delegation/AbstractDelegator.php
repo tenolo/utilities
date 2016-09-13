@@ -14,14 +14,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 class AbstractDelegator implements AbstractDelegatorInterface
 {
 
-    /** @var ArrayCollection|DelegateInterface[] */
+    /** @var ArrayCollection */
     protected $delegates;
 
-    /** @var DelegateInterface */
+    /** @var mixed */
     protected $defaultDelegate;
 
     /**
-     * @param DelegateInterface $default
+     * @param mixed $default
      */
     public function __construct($default = null)
     {
@@ -30,7 +30,7 @@ class AbstractDelegator implements AbstractDelegatorInterface
     }
 
     /**
-     * @return DelegateInterface
+     * @return mixed
      */
     public function getDefaultDelegate()
     {
