@@ -3,6 +3,8 @@
 namespace Tenolo\Utilities\Delegation;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Tenolo\Utilities\Delegation\Depository\DefaultDepository;
+use Tenolo\Utilities\Delegation\Depository\DepositoryInterface;
 
 /**
  * Class AbstractDelegator
@@ -14,19 +16,24 @@ use Doctrine\Common\Collections\ArrayCollection;
 class AbstractDelegator implements AbstractDelegatorInterface
 {
 
-    /** @var ArrayCollection */
-    protected $delegates;
-
-    /** @var mixed */
-    protected $defaultDelegate;
+    /** @var DepositoryInterface */
+    protected $depository;
 
     /**
-     * @param mixed $default
+     * @param null                     $default
+     * @param DepositoryInterface|null $depository
      */
-    public function __construct($default = null)
+    public function __construct($default = null, DepositoryInterface $depository = null)
     {
-        $this->defaultDelegate = $default;
-        $this->delegates = new ArrayCollection();
+        if ($depository == null) {
+            $depository = new DefaultDepository();
+        }
+
+        if (!is_null($default)) {
+            $depository->setDefault($default);
+        }
+
+        $this->depository = $depository;
     }
 
     /**
@@ -34,7 +41,7 @@ class AbstractDelegator implements AbstractDelegatorInterface
      */
     public function getDefaultDelegate()
     {
-        return $this->defaultDelegate;
+        return $this->getDepository()->getDefault();
     }
 
     /**
@@ -42,7 +49,7 @@ class AbstractDelegator implements AbstractDelegatorInterface
      */
     public function getDelegates()
     {
-        return $this->delegates;
+        return $this->getDepository()->getCollection();
     }
 
     /**
@@ -50,16 +57,16 @@ class AbstractDelegator implements AbstractDelegatorInterface
      */
     public function hasDelegate($name)
     {
-        return $this->getDelegates()->containsKey($name);
+        return $this->getDepository()->has($name);
     }
 
     /**
      * @inheritdoc
      */
-    public function addDelegate($name, $builder)
+    public function addDelegate($name, $delegate)
     {
-        if (!$this->getDelegates()->containsKey($name)) {
-            $this->getDelegates()->set($name, $builder);
+        if (!$this->hasDelegate($name)) {
+            $this->getDepository()->set($name, $delegate);
         }
     }
 
@@ -71,11 +78,19 @@ class AbstractDelegator implements AbstractDelegatorInterface
     protected function getDelegate($name)
     {
         // fallback
-        if (!$this->getDelegates()->containsKey($name)) {
+        if (!$this->hasDelegate($name)) {
             return $this->getDefaultDelegate();
         }
 
-        return $this->getDelegates()->get($name);
+        return $this->getDepository()->get($name);
+    }
+
+    /**
+     * @return DepositoryInterface
+     */
+    protected function getDepository()
+    {
+        return $this->depository;
     }
 
 }
