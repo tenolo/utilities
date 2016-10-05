@@ -1,6 +1,7 @@
 <?php
 
 namespace Tenolo\Utilities\Delegation\Depository;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
