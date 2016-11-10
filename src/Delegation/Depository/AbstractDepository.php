@@ -80,6 +80,6 @@ abstract class AbstractDepository implements DepositoryInterface
      */
     public function has($name)
     {
-        return $this->getCollection()->contains($name);
+        return $this->getCollection()->containsKey($name);
     }
 }
