@@ -6,9 +6,9 @@ namespace Tenolo\Utilities\Utils;
  * Class String
  *
  * @package Tenolo\Utilities\Utils
- * @author Nikita Loges
+ * @author  Nikita Loges
  * @company tenolo GbR
- * @date 26.05.14
+ * @date    26.05.14
  */
 class StringUtil extends BaseUtil
 {
@@ -17,7 +17,7 @@ class StringUtil extends BaseUtil
      * Pad a string to a certain length with another string
      *
      * @param    string $value
-     * @param    int $length
+     * @param    int    $length
      * @param    string $padString
      * @param    string $side left|right|both
      *
@@ -147,7 +147,7 @@ class StringUtil extends BaseUtil
      * Sorts an array of strings and maintain index association.
      *
      * @param    array $array
-     * @param    int $sort_flags
+     * @param    int   $sort_flags
      *
      * @return    boolean
      */
@@ -211,8 +211,35 @@ class StringUtil extends BaseUtil
     }
 
     /**
+     * @param $string
+     *
+     * @return mixed
+     */
+    public static function countWords($string)
+    {
+        return str_word_count($string);
+    }
+
+    /**
+     * @param $string
+     * @param $limit
+     *
+     * @return string
+     */
+    public static function cutWords($string, $limit)
+    {
+        if (static::countWords($string) > $limit) {
+            $words = str_word_count($string, 2);
+            $pos = array_keys($words);
+            $string = substr($string, 0, $pos[$limit]);
+        }
+
+        return $string;
+    }
+
+    /**
      * @param string $string
-     * @param int $length
+     * @param int    $length
      *
      * @return string
      */
@@ -290,6 +317,7 @@ class StringUtil extends BaseUtil
      *
      * @param $search
      * @param $subject
+     *
      * @return mixed
      */
     public static function remove($search, $subject)
@@ -302,6 +330,7 @@ class StringUtil extends BaseUtil
      *
      * @param $needle
      * @param $haystack
+     *
      * @return string
      */
     public static function removeFromEnd($needle, $haystack)
@@ -334,16 +363,16 @@ class StringUtil extends BaseUtil
     /**
      * Checks wether $haystack starts with $needle, or not.
      *
-     * @param    string $haystack The string to be checked for starting with $needle
-     * @param    string|array $needle The string to be found at the start of $haystack
-     * @param    boolean $ci Case insensitive or not. Default = false.
+     * @param    string       $haystack The string to be checked for starting with $needle
+     * @param    string|array $needle   The string to be found at the start of $haystack
+     * @param    boolean      $ci       Case insensitive or not. Default = false.
      *
      * @return    boolean                True, if $haystack starts with $needle, false otherwise.
      */
     public static function startsWith($haystack, $needle, $ci = false)
     {
         if (is_string($needle)) {
-            $needle = array($needle);
+            $needle = [$needle];
         }
 
         if ($ci) {
@@ -366,8 +395,8 @@ class StringUtil extends BaseUtil
     /**
      * Returns true if $haystack ends with $needle or if the length of $needle is 0.
      *
-     * @param    string $haystack
-     * @param    string $needle
+     * @param    string  $haystack
+     * @param    string  $needle
      * @param    boolean $ci case insensitive
      *
      * @return    boolean
@@ -389,7 +418,7 @@ class StringUtil extends BaseUtil
     /**
      * @param string $haystack
      * @param string $needle
-     * @param bool $ci
+     * @param bool   $ci
      *
      * @return bool
      */
@@ -397,12 +426,12 @@ class StringUtil extends BaseUtil
     {
         $found = false;
 
-        if(!is_array($needle)) {
-            $needle = array($needle);
+        if (!is_array($needle)) {
+            $needle = [$needle];
         }
 
-        if(count($needle)) {
-            foreach($needle as $n) {
+        if (count($needle)) {
+            foreach ($needle as $n) {
                 if ($ci) {
                     $value = static::indexOfIgnoreCase($haystack, $n);
                 } else {
