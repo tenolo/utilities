@@ -8,6 +8,7 @@ namespace Tenolo\Utilities\Delegation;
  * @package Tenolo\Utilities\Delegation
  * @author  Nikita Loges
  * @company tenolo GbR
+ * @deprecated
  */
 interface DelegateInterface
 {
