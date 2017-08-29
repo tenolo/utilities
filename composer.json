@@ -21,13 +21,17 @@
         {
             "name": "Nikita Loges",
             "email": "n.loges@tenolo.de"
+        },
+        {
+            "name": "Marcel Kussin",
+            "email": "marcel@kussin.net"
         }
     ],
     "require": {
         "php": "~5.5|~7.0",
 
         "doctrine/common": "~2.6",
-        "symfony/options-resolver": "~2.3|~3.0",
+        "symfony/options-resolver": "~2.7|~3.0",
         "hackzilla/password-generator": "~1.2"
     },
     "autoload": {
