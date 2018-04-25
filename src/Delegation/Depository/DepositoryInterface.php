@@ -2,7 +2,7 @@
 
 namespace Tenolo\Utilities\Delegation\Depository;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Tenolo\Utilities\Delegation\Model\MetaDataInterface;
 
 /**
  * Interface DepositoryInterface
@@ -30,7 +30,7 @@ interface DepositoryInterface
     public function hasDefault();
 
     /**
-     * @return ArrayCollection|\mixed[]
+     * @return array
      */
     public function getCollection();
 
@@ -42,10 +42,15 @@ interface DepositoryInterface
     public function get($name);
 
     /**
-     * @param $name
-     * @param $value
+     * @inheritdoc
      */
-    public function set($name, $value);
+    public function getByMeta(MetaDataInterface $meta);
+
+    /**
+     * @param                   $name
+     * @param MetaDataInterface $meta
+     */
+    public function set($name, MetaDataInterface $meta);
 
     /**
      * @param $name

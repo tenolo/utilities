@@ -4,6 +4,7 @@ namespace Tenolo\Utilities\Delegation\Depository;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use Tenolo\Utilities\Delegation\Model\MetaDataInterface;
 
 /**
  * Class ServiceDepository
@@ -43,13 +44,15 @@ class ServiceDepository extends AbstractDepository
     /**
      * @inheritDoc
      */
-    public function set($name, $value)
+    public function set($name, MetaDataInterface $meta)
     {
+        $value = $meta->getValue();
+
         if (!$this->getContainer()->has($value)) {
             throw new ServiceNotFoundException($value);
         }
 
-        return parent::set($name, $value);
+        return parent::set($name, $meta);
     }
 
     /**
@@ -70,6 +73,14 @@ class ServiceDepository extends AbstractDepository
         $get = parent::get($name);
 
         return $this->getContainer()->get($get);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getByMeta(MetaDataInterface $meta)
+    {
+        return $this->getContainer()->get($meta->getValue());
     }
 
     /**

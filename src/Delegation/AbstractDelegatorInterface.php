@@ -20,7 +20,7 @@ interface AbstractDelegatorInterface
     public function getDefaultDelegate();
 
     /**
-     * @return ArrayCollection
+     * @return array
      */
     public function getDelegates();
 
@@ -32,8 +32,9 @@ interface AbstractDelegatorInterface
     public function hasDelegate($name);
 
     /**
-     * @param $name
-     * @param $delegate
+     * @param     $name
+     * @param     $delegate
+     * @param int $priority
      */
-    public function addDelegate($name, $delegate);
+    public function addDelegate($name, $delegate, $priority = 0);
 }

@@ -2,7 +2,7 @@
 
 namespace Tenolo\Utilities\Delegation\Depository;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Tenolo\Utilities\Delegation\Model\MetaDataInterface;
 
 /**
  * Class AbstractDepository
@@ -17,16 +17,15 @@ abstract class AbstractDepository implements DepositoryInterface
     /** @var mixed */
     protected $default;
 
-    /** @var ArrayCollection|mixed[] */
-    protected $collection;
+    /** @var mixed[] */
+    protected $collection = [];
 
     /**
-     *
      */
     public function __construct()
     {
-        $this->collection = new ArrayCollection();
     }
+
     /**
      * @inheritdoc
      */
@@ -62,17 +61,39 @@ abstract class AbstractDepository implements DepositoryInterface
     /**
      * @inheritdoc
      */
-    public function get($name)
+    public function getByMeta(MetaDataInterface $meta)
     {
-        return $this->getCollection()->get($name);
+        return $meta->getValue();
     }
 
     /**
      * @inheritdoc
      */
-    public function set($name, $value)
+    public function get($name)
     {
-        return $this->getCollection()->set($name, $value);
+        $metas = $this->collection[$name];
+
+        if (count($metas)) {
+            $metas = $this->sortMetas($metas);
+        }
+
+        return $metas[0];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getAll($name)
+    {
+        return $this->collection[$name];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function set($name, MetaDataInterface $meta)
+    {
+        return $this->collection[$name][] = $meta;
     }
 
     /**
@@ -80,6 +101,26 @@ abstract class AbstractDepository implements DepositoryInterface
      */
     public function has($name)
     {
-        return $this->getCollection()->containsKey($name);
+        return isset($this->collection[$name]);
+    }
+
+    /**
+     * @param array $metas
+     *
+     * @return array
+     */
+    protected function sortMetas(array $metas)
+    {
+        usort($metas, function (MetaDataInterface $a, MetaDataInterface $b) {
+            if ($a->getPriority() > $b->getPriority()) {
+                return -1;
+            } elseif ($a->getPriority() < $b->getPriority()) {
+                return 1;
+            }
+
+            return 0;
+        });
+
+        return $metas;
     }
 }

@@ -2,9 +2,10 @@
 
 namespace Tenolo\Utilities\Delegation;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Tenolo\Utilities\Delegation\Depository\DefaultDepository;
 use Tenolo\Utilities\Delegation\Depository\DepositoryInterface;
+use Tenolo\Utilities\Delegation\Model\MetaData;
+use Tenolo\Utilities\Delegation\Model\MetaDataInterface;
 
 /**
  * Class AbstractDelegator
@@ -37,7 +38,7 @@ class AbstractDelegator implements AbstractDelegatorInterface
     }
 
     /**
-     * @return mixed
+     * @inheritdoc
      */
     public function getDefaultDelegate()
     {
@@ -45,7 +46,7 @@ class AbstractDelegator implements AbstractDelegatorInterface
     }
 
     /**
-     * @return ArrayCollection
+     * @inheritdoc
      */
     public function getDelegates()
     {
@@ -63,10 +64,12 @@ class AbstractDelegator implements AbstractDelegatorInterface
     /**
      * @inheritdoc
      */
-    public function addDelegate($name, $delegate)
+    public function addDelegate($name, $delegate, $priority = 0)
     {
         if (!$this->hasDelegate($name)) {
-            $this->getDepository()->set($name, $delegate);
+            $meta = new MetaData($delegate, $priority);
+
+            $this->getDepository()->set($name, $meta);
         }
     }
 
@@ -83,6 +86,31 @@ class AbstractDelegator implements AbstractDelegatorInterface
         }
 
         return $this->getDepository()->get($name);
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return mixed
+     */
+    protected function getDelegateByMeta(MetaDataInterface $meta)
+    {
+        return $this->getDepository()->getByMeta($meta);
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return mixed
+     */
+    protected function getDelegateAll($name)
+    {
+        // fallback
+        if (!$this->hasDelegate($name)) {
+            return [];
+        }
+
+        return $this->getDepository()->getAll($name);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Tenolo\Utilities\Delegation\Depository;
 
+use Tenolo\Utilities\Delegation\Model\MetaDataInterface;
 use Tenolo\Utilities\Exception\InvalidArgumentTypeException;
 
 /**
@@ -32,10 +33,7 @@ class ObjectDepository extends AbstractDepository
      */
     public function setDefault($default)
     {
-        $reflection = new \ReflectionClass($default);
-        if (!$reflection->implementsInterface($this->interfaceName)) {
-            throw new InvalidArgumentTypeException($default, $this->interfaceName);
-        }
+        $this->validateValue($default);
 
         parent::setDefault($default);
     }
@@ -43,14 +41,25 @@ class ObjectDepository extends AbstractDepository
     /**
      * @inheritDoc
      */
-    public function set($name, $value)
+    public function set($name, MetaDataInterface $meta)
+    {
+        $this->validateValue($meta->getValue());
+
+        return parent::set($name, $meta);
+    }
+
+    /**
+     * @param $value
+     *
+     * @throws \ReflectionException
+     */
+    protected function validateValue($value)
     {
         $reflection = new \ReflectionClass($value);
+
         if (!$reflection->implementsInterface($this->interfaceName)) {
             throw new InvalidArgumentTypeException($value, $this->interfaceName);
         }
-
-        return parent::set($name, $value);
     }
 
 }
