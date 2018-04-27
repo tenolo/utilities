@@ -77,7 +77,7 @@ abstract class AbstractDepository implements DepositoryInterface
             $metas = $this->sortMetas($metas);
         }
 
-        return $metas[0];
+        return $this->getByMeta($metas[0]);
     }
 
     /**

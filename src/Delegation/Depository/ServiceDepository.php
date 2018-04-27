@@ -66,16 +66,6 @@ class ServiceDepository extends AbstractDepository
     }
 
     /**
-     * @inheritDoc
-     */
-    public function get($name)
-    {
-        $get = parent::get($name);
-
-        return $this->getContainer()->get($get);
-    }
-
-    /**
      * @inheritdoc
      */
     public function getByMeta(MetaDataInterface $meta)
