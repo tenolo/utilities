@@ -50,7 +50,16 @@ class AbstractDelegator implements AbstractDelegatorInterface
      */
     public function getDelegates()
     {
-        return $this->getDepository()->getCollection();
+        $collection = $this->getDepository()->getCollection();
+        $all = [];
+
+        foreach ($collection as $main) {
+            foreach ($main as $delegate) {
+                $all[] = $this->depository->getByMeta($delegate);
+            }
+        }
+
+        return $all;
     }
 
     /**
