@@ -47,7 +47,7 @@ abstract class AbstractDepository implements DepositoryInterface
      */
     public function hasDefault()
     {
-        return !is_null($this->default);
+        return $this->default !== null;
     }
 
     /**

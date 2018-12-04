@@ -26,11 +26,11 @@ class AbstractDelegator implements AbstractDelegatorInterface
      */
     public function __construct($default = null, DepositoryInterface $depository = null)
     {
-        if ($depository == null) {
+        if ($depository === null) {
             $depository = new DefaultDepository();
         }
 
-        if (!is_null($default)) {
+        if ($default !== null) {
             $depository->setDefault($default);
         }
 
@@ -75,7 +75,7 @@ class AbstractDelegator implements AbstractDelegatorInterface
      */
     public function addDelegate($name, $delegate, $priority = 0)
     {
-        if (!$this->hasDelegate($name)) {
+        if (!$this->hasDelegate($name) && $name !== $this->depository->getDefault()) {
             $meta = new MetaData($delegate, $priority);
 
             $this->getDepository()->set($name, $meta);
