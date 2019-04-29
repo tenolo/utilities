@@ -6,10 +6,11 @@ use Tenolo\Utilities\Utils\StringUtil;
 
 /**
  * Class StringTest
+ *
  * @package Tenolo\Utilities\Utils\Tests
- * @author Nikita Loges
+ * @author  Nikita Loges
  * @company tenolo GbR
- * @date 20.10.2014
+ * @date    29.04.19
  */
 class StringUtilTest extends \PHPUnit_Framework_TestCase
 {
@@ -26,22 +27,37 @@ class StringUtilTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('bbbabbb', $result);
     }
 
+    public function testGetRandomID()
+    {
+        $result = StringUtil::getRandomID();
+
+        $this->assertTrue(is_string($result));
+        $this->assertEquals(128, strlen($result));
+        $this->assertEquals(16, strlen(StringUtil::getRandomId(16)));
+    }
+
     public function testTrim()
     {
         $result = StringUtil::trim(' test ');
+
         $this->assertEquals('test', $result);
+        $this->assertEquals("ooba", StringUtil::trim('foobar', 'fr'));
     }
 
     public function testLtrim()
     {
         $result = StringUtil::ltrim(' test ');
+
         $this->assertEquals('test ', $result);
+        $this->assertEquals("oobar", StringUtil::ltrim('foobar', 'fr'));
     }
 
     public function testRtrim()
     {
         $result = StringUtil::rtrim(' test ');
+
         $this->assertEquals(' test', $result);
+        $this->assertEquals("fooba", StringUtil::rtrim('foobar', 'fr'));
     }
 
     public function testEscape()
@@ -70,10 +86,10 @@ class StringUtilTest extends \PHPUnit_Framework_TestCase
         $result = StringUtil::isSerialized('test');
         $this->assertEquals(false, $result);
 
-        $result = !StringUtil::isSerialized('a:1:{s:4:"test";i:1;}');
+        $result = ! StringUtil::isSerialized('a:1:{s:4:"test";i:1;}');
         $this->assertEquals(false, $result);
 
-        $result = !StringUtil::isSerialized('test');
+        $result = ! StringUtil::isSerialized('test');
         $this->assertEquals(true, $result);
     }
 
@@ -125,6 +141,17 @@ class StringUtilTest extends \PHPUnit_Framework_TestCase
 
         $result = StringUtil::substring('Ich bin ein Test', 12);
         $this->assertSame('Test', $result);
+    }
+
+    public function testCountWords()
+    {
+        $this->assertEquals(3, StringUtil::countWords('foo bar baz'));
+    }
+
+    public function testCutWords()
+    {
+        $this->assertEquals('foo bar', StringUtil::cutWords('foo bar baz', 2));
+        $this->assertEquals('foo bar baz', StringUtil::cutWords('foo bar baz', 3));
     }
 
     public function testGetFirstNChars()
@@ -212,6 +239,9 @@ class StringUtilTest extends \PHPUnit_Framework_TestCase
 
         $result = StringUtil::endsWith('Ich bin ein Test', 'ein');
         $this->assertSame(false, $result);
+
+        $result = StringUtil::endsWith('foo', '');
+        $this->assertTrue($result);
     }
 
     public function testContains()
@@ -225,4 +255,43 @@ class StringUtilTest extends \PHPUnit_Framework_TestCase
         $result = StringUtil::contains('Ich bin ein Test', 'Wir');
         $this->assertSame(false, $result);
     }
-} 
+
+    public function testReplaceReg()
+    {
+        $this->assertEquals('barbaz', StringUtil::replaceReg('/foo/', 'baz', 'barfoo'));
+    }
+
+    public function testStripSlashes()
+    {
+        $this->assertEquals("foo'bar", StringUtil::stripSlashes("foo\'bar"));
+    }
+
+    public function testNl2br()
+    {
+        $this->assertEquals("foo<br />\nbar", StringUtil::nl2br("foo\nbar"));
+    }
+
+    public function testStudlyCase()
+    {
+        $this->assertEquals('TenoloIsGreat', StringUtil::studlyCase('tenolo_is_great'));
+        $this->assertEquals('TenoloISGreat', StringUtil::studlyCase('tenolo_i_s_great'));
+        $this->assertEquals('TenoloIsGreat', StringUtil::studlyCase('tenolo-is-great'));
+        $this->assertEquals('TenoloIsGreat', StringUtil::studlyCase('tenolo  -_-  is   -_-   great   '));
+        $this->assertEquals('FooBar', StringUtil::studlyCase('fooBar'));
+        $this->assertEquals('FooBar', StringUtil::studlyCase('foo_bar'));
+        $this->assertEquals('FooBarBaz', StringUtil::studlyCase('foo-barBaz'));
+        $this->assertEquals('FooBarBaz', StringUtil::studlyCase('foo-bar_baz'));
+    }
+
+    public function testCamelCase()
+    {
+        $this->assertEquals('tenoloIsGreat', StringUtil::camelCase('tenolo_is_great'));
+        $this->assertEquals('tenoloISGreat', StringUtil::camelCase('tenolo_i_s_great'));
+        $this->assertEquals('tenoloIsGreat', StringUtil::camelCase('tenolo-is-great'));
+        $this->assertEquals('tenoloIsGreat', StringUtil::camelCase('tenolo  -_-  is   -_-   great   '));
+        $this->assertEquals('fooBar', StringUtil::camelCase('fooBar'));
+        $this->assertEquals('fooBar', StringUtil::camelCase('foo_bar'));
+        $this->assertEquals('fooBarBaz', StringUtil::camelCase('foo-barBaz'));
+        $this->assertEquals('fooBarBaz', StringUtil::camelCase('foo-bar_baz'));
+    }
+}

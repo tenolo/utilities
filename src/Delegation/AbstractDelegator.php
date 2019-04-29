@@ -129,5 +129,4 @@ class AbstractDelegator implements AbstractDelegatorInterface
     {
         return $this->depository;
     }
-
 }

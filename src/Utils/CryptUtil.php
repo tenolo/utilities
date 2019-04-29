@@ -102,4 +102,4 @@ class CryptUtil extends BaseUtil
 
         return $hash;
     }
-} 
+}

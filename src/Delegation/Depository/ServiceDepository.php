@@ -80,5 +80,4 @@ class ServiceDepository extends AbstractDepository
     {
         return $this->container;
     }
-
 }

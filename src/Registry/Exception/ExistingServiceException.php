@@ -7,7 +7,8 @@ namespace Tenolo\Utilities\Registry\Exception;
  * @package Tenolo\Utilities\Registry\Exception
  * @author Nikita Loges, tenolo GbR
  */
-class ExistingServiceException extends \InvalidArgumentException {
+class ExistingServiceException extends \InvalidArgumentException
+{
 
     /**
      * @inheritdoc

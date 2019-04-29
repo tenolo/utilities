@@ -122,7 +122,6 @@ class ColorUtil extends BaseUtil
             $h = 0;
             $s = 0;
         } else {
-
             if ($l < 0.5) {
                 $s = $del_max / ($var_max + $var_min);
             } else {
