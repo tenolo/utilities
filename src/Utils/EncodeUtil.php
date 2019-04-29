@@ -109,4 +109,4 @@ class EncodeUtil extends BaseUtil
     {
         return (($encoding === 'UTF-8') && (utf8_encode(utf8_decode($value)) === $value));
     }
-} 
+}

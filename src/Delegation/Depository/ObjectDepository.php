@@ -61,5 +61,4 @@ class ObjectDepository extends AbstractDepository
             throw new InvalidArgumentTypeException($value, $this->interfaceName);
         }
     }
-
 }

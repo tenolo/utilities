@@ -56,4 +56,4 @@ class IPUtil extends BaseUtil
 
         return $ipRangeStart.'-'.$ipRangeEnd;
     }
-} 
+}

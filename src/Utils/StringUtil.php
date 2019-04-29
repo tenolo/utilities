@@ -8,7 +8,7 @@ namespace Tenolo\Utilities\Utils;
  * @package Tenolo\Utilities\Utils
  * @author  Nikita Loges
  * @company tenolo GbR
- * @date    26.05.14
+ * @date    29.04.19
  */
 class StringUtil extends BaseUtil
 {
@@ -16,10 +16,10 @@ class StringUtil extends BaseUtil
     /**
      * Pad a string to a certain length with another string
      *
-     * @param    string $value
-     * @param    int    $length
-     * @param    string $padString
-     * @param    string $side left|right|both
+     * @param string $value
+     * @param int    $length
+     * @param string $padString
+     * @param string $side left|right|both
      *
      * @return    string
      */
@@ -54,18 +54,14 @@ class StringUtil extends BaseUtil
     /**
      * alias to php trim() function
      *
-     * @param    string $text
-     * @param    string $charlist
+     * @param string $text
+     * @param string $charlist
      *
      * @return    string
      */
-    public static function trim($text, $charlist = null)
+    public static function trim($text, $charlist = " \t\n\r\0\x0B")
     {
-        if (empty($charlist)) {
-            return trim($text);
-        } else {
-            return trim($text, $charlist);
-        }
+        return trim($text, $charlist);
     }
 
     /**
@@ -75,13 +71,9 @@ class StringUtil extends BaseUtil
      *
      * @return string
      */
-    public static function ltrim($text, $charlist = null)
+    public static function ltrim($text, $charlist = " \t\n\r\0\x0B")
     {
-        if ($charlist === null) {
-            return ltrim($text);
-        } else {
-            return ltrim($text, $charlist);
-        }
+        return ltrim($text, $charlist);
     }
 
     /**
@@ -91,13 +83,9 @@ class StringUtil extends BaseUtil
      *
      * @return string
      */
-    public static function rtrim($text, $charlist = null)
+    public static function rtrim($text, $charlist = " \t\n\r\0\x0B")
     {
-        if ($charlist === null) {
-            return rtrim($text);
-        } else {
-            return rtrim($text, $charlist);
-        }
+        return rtrim($text, $charlist);
     }
 
     /**
@@ -146,8 +134,8 @@ class StringUtil extends BaseUtil
     /**
      * Sorts an array of strings and maintain index association.
      *
-     * @param    array $array
-     * @param    int   $sort_flags
+     * @param array $array
+     * @param int   $sort_flags
      *
      * @return    boolean
      */
@@ -169,12 +157,11 @@ class StringUtil extends BaseUtil
      */
     public static function indexOf($hayStack, $needle, $offset = 0, $encoding = null)
     {
-        // @info bug: throws an error when pass $encoding with value of null
-        if (!empty($encoding)) {
-            return mb_strpos($hayStack, $needle, $offset, $encoding);
-        } else {
-            return mb_strpos($hayStack, $needle, $offset);
+        if ($encoding === null) {
+            $encoding = mb_internal_encoding();
         }
+
+        return mb_strpos($hayStack, $needle, $offset, $encoding);
     }
 
     /**
@@ -182,12 +169,10 @@ class StringUtil extends BaseUtil
      */
     public static function indexOfIgnoreCase($hayStack, $needle, $offset = 0, $encoding = null)
     {
-        // @info bug: throws an error when pass $encoding with value of null
-        if (!empty($encoding)) {
-            return mb_strpos(static::toLowerCase($hayStack), static::toLowerCase($needle), $offset, $encoding);
-        } else {
-            return mb_strpos(static::toLowerCase($hayStack), static::toLowerCase($needle), $offset);
-        }
+        $hayStack = static::toLowerCase($hayStack);
+        $needle = static::toLowerCase($needle);
+
+        return static::indexOf($hayStack, $needle, $offset, $encoding);
     }
 
     /**
@@ -232,6 +217,7 @@ class StringUtil extends BaseUtil
             $words = str_word_count($string, 2);
             $pos = array_keys($words);
             $string = substr($string, 0, $pos[$limit]);
+            $string = static::trim($string);
         }
 
         return $string;
@@ -335,14 +321,13 @@ class StringUtil extends BaseUtil
      */
     public static function removeFromEnd($needle, $haystack)
     {
-        if (!static::endsWith($haystack, $needle)) {
+        if (! static::endsWith($haystack, $needle)) {
             return $haystack;
         }
 
         $index = (static::lastIndexOf($haystack, $needle));
 
         return static::substring($haystack, 0, $index);
-
     }
 
     /**
@@ -353,7 +338,7 @@ class StringUtil extends BaseUtil
      */
     public static function removeFromStart($needle, $haystack)
     {
-        if (!static::startsWith($haystack, $needle)) {
+        if (! static::startsWith($haystack, $needle)) {
             return $haystack;
         }
 
@@ -363,9 +348,9 @@ class StringUtil extends BaseUtil
     /**
      * Checks wether $haystack starts with $needle, or not.
      *
-     * @param    string       $haystack The string to be checked for starting with $needle
-     * @param    string|array $needle   The string to be found at the start of $haystack
-     * @param    boolean      $ci       Case insensitive or not. Default = false.
+     * @param string       $haystack The string to be checked for starting with $needle
+     * @param string|array $needle   The string to be found at the start of $haystack
+     * @param boolean      $ci       Case insensitive or not. Default = false.
      *
      * @return    boolean                True, if $haystack starts with $needle, false otherwise.
      */
@@ -395,9 +380,9 @@ class StringUtil extends BaseUtil
     /**
      * Returns true if $haystack ends with $needle or if the length of $needle is 0.
      *
-     * @param    string  $haystack
-     * @param    string  $needle
-     * @param    boolean $ci case insensitive
+     * @param string  $haystack
+     * @param string  $needle
+     * @param boolean $ci case insensitive
      *
      * @return    boolean
      */
@@ -407,7 +392,9 @@ class StringUtil extends BaseUtil
             $haystack = static::toLowerCase($haystack);
             $needle = static::toLowerCase($needle);
         }
+
         $length = static::length($needle);
+
         if ($length === 0) {
             return true;
         }
@@ -426,7 +413,7 @@ class StringUtil extends BaseUtil
     {
         $found = false;
 
-        if (!is_array($needle)) {
+        if (! is_array($needle)) {
             $needle = [$needle];
         }
 
@@ -448,11 +435,11 @@ class StringUtil extends BaseUtil
     }
 
     /**
-     * @see str_replace
+     * @see preg_replace
      */
-    public static function replaceReg($pattern, $replace, $subject, &$count = null)
+    public static function replaceReg($pattern, $replace, $subject, $limit = -1, &$count = null)
     {
-        return preg_replace($pattern, $replace, $subject, $count);
+        return preg_replace($pattern, $replace, $subject, $limit, $count);
     }
 
     /**
@@ -470,4 +457,31 @@ class StringUtil extends BaseUtil
     {
         return nl2br($string);
     }
-} 
+
+
+    /**
+     * Convert a value to studly caps case.
+     *
+     * @param string $str
+     *
+     * @return string
+     */
+    public static function studlyCase($str)
+    {
+        $str = ucwords(static::replace(['-', '_'], ' ', $str));
+
+        return static::replace(' ', '', $str);
+    }
+
+    /**
+     * Convert a value to camel case.
+     *
+     * @param string $str
+     *
+     * @return string
+     */
+    public static function camelCase($str)
+    {
+        return lcfirst(static::studlyCase($str));
+    }
+}

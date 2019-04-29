@@ -91,4 +91,4 @@ class MathUtil extends BaseUtil
 
         return $sum;
     }
-} 
+}
