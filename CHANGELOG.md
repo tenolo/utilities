@@ -16,6 +16,7 @@ in reverse chronological order by release.
 - Added `studlyCase` method to `StringUtil` class
 - Added `camelCase` method to `StringUtil` class
 - Added/Updated unit tests for `StringUtil` class
+- Added logo, badges and description to `README.md` file
 
 ### Changed
 
