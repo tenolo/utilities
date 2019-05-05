@@ -1,4 +1,4 @@
-<p align="center"><img src="https://tenolo.de/themes/486/img/tenolo_werbeagentur_bochum.png"7></p>
+<p align="center"><img src="https://tenolo.de/themes/486/img/tenolo_werbeagentur_bochum.png"></p>
 
 <p align="center">
 <a href="https://packagist.org/packages/tenolo/utilities"><img src="https://img.shields.io/packagist/php-v/tenolo/utilities.svg" alt="PHP Version"></a>
@@ -14,7 +14,7 @@ A growing collection of useful helper classes for PHP.
 
 ## Install instructions
 
-First you need to add `tenolo/util-library` to `composer.json`:
+First you need to add `tenolo/utilities` to `composer.json`:
 
 ``` json
 {
@@ -24,7 +24,8 @@ First you need to add `tenolo/util-library` to `composer.json`:
 }
 ```
 
-Please note that `dev-master` points to the latest release. If you want to use the latest development version please use `dev-develop`. Of course you can also use an explicit version number, e.g., `1.0.*`.
+Please note that `dev-master` latest development version. 
+Of course you can also use an explicit version number, e.g., `1.0.*`.
 
 Then use it ;)
 
