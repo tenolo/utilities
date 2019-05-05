@@ -32,7 +32,7 @@ Then use it ;)
 ``` php
 <?php
  
-namespace Some/Namespace;
+namespace Some\Namespace;
 
 use Tenolo\Utilities\Utils\StringUtil;
 
