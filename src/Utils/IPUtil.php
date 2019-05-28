@@ -7,7 +7,7 @@ namespace Tenolo\Utilities\Utils;
  *
  * @package Tenolo\Utilities\Utils
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  * @date    03.11.2014
  */
 class IPUtil extends BaseUtil

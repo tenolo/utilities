@@ -5,7 +5,7 @@ namespace Tenolo\Utilities\Registry\Exception;
 /**
  * Class NoObjectException
  * @package Tenolo\Utilities\Registry\Exception
- * @author Nikita Loges, tenolo GbR
+ * @author Nikita Loges, tenolo GmbH & Co. KG
  */
 class NoObjectException extends \InvalidArgumentException
 {

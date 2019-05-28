@@ -8,7 +8,7 @@ use Tenolo\Utilities\Utils\EntityUtil;
  * Class EntityTest
  * @package Tenolo\Utilities\Utils\Tests
  * @author Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  * @date 20.10.2014
  */
 class EntityUtilTest extends \PHPUnit_Framework_TestCase

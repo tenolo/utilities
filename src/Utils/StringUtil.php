@@ -7,7 +7,7 @@ namespace Tenolo\Utilities\Utils;
  *
  * @package Tenolo\Utilities\Utils
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  * @date    29.04.19
  */
 class StringUtil extends BaseUtil

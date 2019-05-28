@@ -6,7 +6,7 @@ namespace Tenolo\Utilities\Utils;
  * Class Base
  * @package Tenolo\Utilities\Utils
  * @author Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  * @date 26.05.14
  */
 class BaseUtil

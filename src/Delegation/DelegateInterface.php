@@ -7,7 +7,7 @@ namespace Tenolo\Utilities\Delegation;
  *
  * @package Tenolo\Utilities\Delegation
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  * @deprecated
  */
 interface DelegateInterface

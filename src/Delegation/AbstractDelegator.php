@@ -12,7 +12,7 @@ use Tenolo\Utilities\Delegation\Model\MetaDataInterface;
  *
  * @package Tenolo\Utilities\Delegation
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  */
 class AbstractDelegator implements AbstractDelegatorInterface
 {

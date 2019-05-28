@@ -6,7 +6,7 @@ namespace Tenolo\Utilities\Utils;
  * Class Entity
  * @package Tenolo\Utilities\Utils
  * @author Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  * @date 29.07.14
  */
 class EntityUtil extends BaseUtil

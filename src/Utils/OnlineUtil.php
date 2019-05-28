@@ -7,7 +7,7 @@ namespace Tenolo\Utilities\Utils;
  *
  * @package Tenolo\Utilities\Utils
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  */
 class OnlineUtil extends BaseUtil
 {

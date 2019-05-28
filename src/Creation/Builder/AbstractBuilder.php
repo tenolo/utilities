@@ -7,7 +7,7 @@ namespace Tenolo\Utilities\Creation\Builder;
  *
  * @package Tenolo\Utilities\Creation\Builder
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  */
 abstract class AbstractBuilder
 {

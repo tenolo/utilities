@@ -7,7 +7,7 @@ namespace Tenolo\Utilities\Exception;
  *
  * @package Tenolo\Utilities\Exception
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  * @date    20.04.2015
  */
 class InvalidArgumentTypeException extends \RuntimeException

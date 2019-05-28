@@ -7,7 +7,7 @@ namespace Tenolo\Utilities\Delegation\Depository;
  *
  * @package Tenolo\Utilities\Delegation\Depository
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  */
 class DefaultDepository extends AbstractDepository
 {

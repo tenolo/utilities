@@ -10,7 +10,7 @@ use Tenolo\Utilities\Exception\InvalidArgumentTypeException;
  *
  * @package Tenolo\Utilities\Delegation\Depository
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  */
 class ObjectDepository extends AbstractDepository
 {

@@ -5,7 +5,7 @@ namespace Tenolo\Utilities\Registry;
 /**
  * Class ServiceRegistryInterface
  * @package Tenolo\Utilities\Registry
- * @author Nikita Loges, tenolo GbR
+ * @author Nikita Loges, tenolo GmbH & Co. KG
  */
 interface ServiceRegistryInterface
 {

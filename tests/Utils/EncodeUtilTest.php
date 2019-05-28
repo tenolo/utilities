@@ -8,7 +8,7 @@ use Tenolo\Utilities\Utils\EncodeUtil;
  * Class EncodingTest
  * @package Tenolo\Utilities\Utils\Tests
  * @author Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  * @date 20.10.2014
  */
 class EncodeUtilTest extends \PHPUnit_Framework_TestCase

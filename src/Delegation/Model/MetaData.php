@@ -7,7 +7,7 @@ namespace Tenolo\Utilities\Delegation\Model;
  *
  * @package Tenolo\Utilities\Delegation\Model
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  */
 class MetaData implements MetaDataInterface
 {

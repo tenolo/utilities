@@ -5,7 +5,7 @@ namespace Tenolo\Utilities\Registry\Exception;
 /**
  * Class InvalidInterfaceException
  * @package Tenolo\Utilities\Registry\Exception
- * @author Nikita Loges, tenolo GbR
+ * @author Nikita Loges, tenolo GmbH & Co. KG
  */
 class InvalidInterfaceException extends \InvalidArgumentException
 {

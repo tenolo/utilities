@@ -7,7 +7,7 @@ namespace Tenolo\Utilities\Options;
  *
  * @package Tenolo\Utilities\Options
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  */
 interface OptionsCollectionInterface
 {

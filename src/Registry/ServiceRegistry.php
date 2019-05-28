@@ -12,7 +12,7 @@ use Tenolo\Utilities\Registry\Exception\NoObjectException;
  * Class ServiceRegistry
  *
  * @package Tenolo\Utilities\Registry
- * @author  Nikita Loges, tenolo GbR
+ * @author  Nikita Loges, tenolo GmbH & Co. KG
  */
 class ServiceRegistry implements ServiceRegistryInterface
 {

@@ -9,7 +9,7 @@ use Tenolo\Utilities\Utils\StringUtil;
  *
  * @package Tenolo\Utilities\Utils\Tests
  * @author  Nikita Loges
- * @company tenolo GbR
+ * @company tenolo GmbH & Co. KG
  * @date    29.04.19
  */
 class StringUtilTest extends \PHPUnit_Framework_TestCase
