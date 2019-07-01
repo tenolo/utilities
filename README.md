@@ -1,12 +1,11 @@
-<p align="center"><img src="https://tenolo.de/themes/486/img/tenolo_werbeagentur_bochum.png"></p>
+[![tenolo](https://tenolo.de/themes/486/img/tenolo_werbeagentur_bochum.png)](https://tenolo.de)
 
-<p align="center">
-<a href="https://packagist.org/packages/tenolo/utilities"><img src="https://img.shields.io/packagist/php-v/tenolo/utilities.svg" alt="PHP Version"></a>
-<a href="https://packagist.org/packages/tenolo/utilities"><img src="https://poser.pugx.org/tenolo/utilities/downloads.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/tenolo/utilities"><img src="https://poser.pugx.org/tenolo/utilities/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/tenolo/utilities"><img src="https://poser.pugx.org/tenolo/utilities/v/unstable.svg" alt="Latest Unstable Version"></a>
-<a href="https://packagist.org/packages/tenolo/utilities"><img src="https://poser.pugx.org/tenolo/utilities/license.svg" alt="License"></a>
-</p>
+[![PHP Version](https://img.shields.io/packagist/php-v/tenolo/utilities.svg)](https://packagist.org/packages/tenolo/utilities)
+[![Latest Stable Version](https://img.shields.io/packagist/v/tenolo/utilities.svg?label=stable)](https://packagist.org/packages/tenolo/utilities)
+[![Latest Unstable Version](https://img.shields.io/packagist/vpre/tenolo/utilities.svg?label=unstable)](https://packagist.org/packages/tenolo/utilities)
+[![Total Downloads](https://img.shields.io/packagist/dt/tenolo/utilities.svg)](https://packagist.org/packages/tenolo/utilities)
+[![Total Downloads](https://img.shields.io/packagist/dm/tenolo/utilities.svg)](https://packagist.org/packages/tenolo/utilities)
+[![License](https://img.shields.io/packagist/l/tenolo/utilities.svg)](https://packagist.org/packages/tenolo/utilities)
 
 # Utilities Library
 
